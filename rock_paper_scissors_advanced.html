@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        rock, paper, scissors
+    </title>
+    <link rel="stylesheet" href="./rps_style.css">
+</head>
+<body>
+    <img src="./Resources/Logo.png" class="headerElement"> 
+    <div class="startButton">
+        <div><button data-button="start"><p>Start</p></button></div>
+        <div><input data-input="input" type="number" min="1" placeholder="How many rounds?"></div>
+    </div>
+    
+    <div class="rockButton "><button data-button="rock"><img src="./Resources/rock.png"></button></div>
+    <div class="paperButton "><button data-button="paper"><img src="./Resources/paper.png"></button></div>
+    <div class="scissorsButton "><button data-button="scissors"><img src="./Resources/scissors.png"></button></div>
+
+    <div class="againButton"><button data-button="again"><p>Restart</p></button></div>
+    <div class="scoreElement">
+        <div><p data-paragraph="playerscore">Player<br> Score</p> <p data-paragraph="player"></p></div>
+        <div><p data-paragraph="computerscore">Computer<br> Score</p> <p data-paragraph="computer"></p></div>
+    </div>
+    <div class="winnerElement"><p data-paragraph="draw">Draw!</p><img data-image="computer" src="./Resources/computer.png"><img data-image="player" src="./Resources/player.png"></div>
+
+    <script src="./rps_scripts.js" type="text/javascript"></script>
+</body>
+</html>
