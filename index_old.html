@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <script>
+        function ComputerPlay()
+        {
+            let randomNumber = Math.round(Math.random()*100);
+            let choice = randomNumber%3;
+            let returnValue;
+            switch (choice)
+            {
+                case 0: returnValue = 'rock'; break;
+                case 1: returnValue = 'paper'; break;
+                case 2: returnValue = 'scissors'; break;
+                    default:
+            }
+            return returnValue;
+        }
+        function PlayerPlay()
+        {
+            let input, returnValue;
+            do
+            {
+                input = prompt('Rock, Paper or Scissors?');
+                returnValue = input.toLowerCase();
+            }while((returnValue != 'rock') && (returnValue != 'paper') && (returnValue != 'scissors'));
+
+            return returnValue;
+        }
+        function PlayRound()
+        {
+            let returnValue, computerChoice = ComputerPlay(), playerChoice = PlayerPlay();
+
+            if(computerChoice == playerChoice) 
+                returnValue = 'Draw!';
+            else if(computerChoice == 'rock')
+                {
+                    if(playerChoice == 'paper') returnValue = 'player';
+                    else returnValue = 'computer';
+                }
+            else if(computerChoice == 'paper')
+                {
+                    if(playerChoice == 'scissors') returnValue = 'player';
+                    else returnValue = 'computer';
+                }
+            else if(computerChoice == 'scissors')
+            {
+                if(playerChoice == 'rock') returnValue = 'player';
+                else returnValue = 'computer';
+            }
+            return returnValue;
+        }
+        function Game()
+        {
+            let rounds = prompt('How many rounds do you want?'), scorePlayer = 0, scoreComputer = 0, returnedValue;
+            for(let i=0;i<parseInt(rounds);i++)
+            {
+                returnedValue = PlayRound();
+                if(returnedValue == 'Draw!')
+                {
+                    console.log('It\'s a draw!');
+                    scorePlayer++;
+                    scoreComputer++;
+                }
+                else if(returnedValue == 'player' )
+                {
+                    scorePlayer++;
+                    console.log('The ' + returnedValue + ' wins!');
+                }
+                else
+                {
+                    scoreComputer++;
+                    console.log('The ' + returnedValue + ' wins!');
+                }
+            }
+            let winner;
+            if(scorePlayer == scoreComputer) winner = 'No one';
+            else if(scorePlayer > scoreComputer) winner = 'Player';
+            else winner = 'Computer';
+
+            console.log('The winner is ' + winner + ', congratulations!');
+
+        }
+        
+    </script>
+</body>
+</html>

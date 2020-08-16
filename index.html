@@ -1,90 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <title>
+        rock, paper, scissors
+    </title>
+    <link rel="stylesheet" href="./rps_style.css">
 </head>
 <body>
-    <script>
-        function ComputerPlay()
-        {
-            let randomNumber = Math.round(Math.random()*100);
-            let choice = randomNumber%3;
-            let returnValue;
-            switch (choice)
-            {
-                case 0: returnValue = 'rock'; break;
-                case 1: returnValue = 'paper'; break;
-                case 2: returnValue = 'scissors'; break;
-                    default:
-            }
-            return returnValue;
-        }
-        function PlayerPlay()
-        {
-            let input, returnValue;
-            do
-            {
-                input = prompt('Rock, Paper or Scissors?');
-                returnValue = input.toLowerCase();
-            }while((returnValue != 'rock') && (returnValue != 'paper') && (returnValue != 'scissors'));
+    <img src="./Resources/Logo.png" class="headerElement"> 
+    <div class="startButton">
+        <div><button data-button="start"><p>Start</p></button></div>
+        <div><input data-input="input" type="number" min="1" placeholder="How many rounds?"></div>
+    </div>
+    
+    <div class="rockButton "><button data-button="rock"><img src="./Resources/rock.png"></button></div>
+    <div class="paperButton "><button data-button="paper"><img src="./Resources/paper.png"></button></div>
+    <div class="scissorsButton "><button data-button="scissors"><img src="./Resources/scissors.png"></button></div>
 
-            return returnValue;
-        }
-        function PlayRound()
-        {
-            let returnValue, computerChoice = ComputerPlay(), playerChoice = PlayerPlay();
+    <div class="againButton"><button data-button="again"><p>Restart</p></button></div>
+    <div class="scoreElement">
+        <div><p data-paragraph="playerscore">Player<br> Score</p> <p data-paragraph="player"></p></div>
+        <div><p data-paragraph="computerscore">Computer<br> Score</p> <p data-paragraph="computer"></p></div>
+    </div>
+    <div class="winnerElement"><p data-paragraph="draw">Draw!</p><img data-image="computer" src="./Resources/computer.png"><img data-image="player" src="./Resources/player.png"></div>
 
-            if(computerChoice == playerChoice) 
-                returnValue = 'Draw!';
-            else if(computerChoice == 'rock')
-                {
-                    if(playerChoice == 'paper') returnValue = 'player';
-                    else returnValue = 'computer';
-                }
-            else if(computerChoice == 'paper')
-                {
-                    if(playerChoice == 'scissors') returnValue = 'player';
-                    else returnValue = 'computer';
-                }
-            else if(computerChoice == 'scissors')
-            {
-                if(playerChoice == 'rock') returnValue = 'player';
-                else returnValue = 'computer';
-            }
-            return returnValue;
-        }
-        function Game()
-        {
-            let rounds = prompt('How many rounds do you want?'), scorePlayer = 0, scoreComputer = 0, returnedValue;
-            for(let i=0;i<parseInt(rounds);i++)
-            {
-                returnedValue = PlayRound();
-                if(returnedValue == 'Draw!')
-                {
-                    console.log('It\'s a draw!');
-                    scorePlayer++;
-                    scoreComputer++;
-                }
-                else if(returnedValue == 'player' )
-                {
-                    scorePlayer++;
-                    console.log('The ' + returnedValue + ' wins!');
-                }
-                else
-                {
-                    scoreComputer++;
-                    console.log('The ' + returnedValue + ' wins!');
-                }
-            }
-            let winner;
-            if(scorePlayer == scoreComputer) winner = 'No one';
-            else if(scorePlayer > scoreComputer) winner = 'Player';
-            else winner = 'Computer';
-
-            console.log('The winner is ' + winner + ', congratulations!');
-
-        }
-        
-    </script>
+    <script src="./rps_scripts.js" type="text/javascript"></script>
 </body>
 </html>
